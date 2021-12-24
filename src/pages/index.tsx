@@ -1,4 +1,5 @@
 import { GetStaticProps } from 'next';
+import Head from 'next/head'
 import Header from '../components/Header';
 import Link from 'next/link'
 
@@ -46,13 +47,43 @@ export default function Home({postsPagination}: HomeProps ) {
       )
     }
   })
-
-
-
+  
   const [posts, setPosts] = useState<Post[]>(formatedPost);
+  const [nextPage, setNextPage] = useState(postsPagination.next_page);
+
+  async function handleNextPage(): Promise<void> {
+
+    const responseResults = await fetch(`${nextPage}`)
+    .then(response => response.json());
+
+    setNextPage(responseResults.next_page);
+
+    const newPosts = responseResults.results.map(post => {
+      return {
+        uid: post.uid,
+        first_publication_date: format(
+          new Date(post.first_publication_date),
+          'dd MMM yyyy', 
+          {
+            locale: ptBR,
+          }
+        ),
+        data: {
+          title: post.data.title,
+          subtitle:post.data.subtitle,
+          author: post.data.author,
+        }
+      }
+    });
+
+    setPosts([...posts, ...newPosts])
+  }
 
   return (
     <>
+      <Head>
+        <title>Home | SpaceTraveling</title>
+      </Head>
       <main className={commonStyles.container}>
         <Header/>
         <div className={styles.posts}>
@@ -68,9 +99,11 @@ export default function Home({postsPagination}: HomeProps ) {
               </a>
             </Link>
           ))}
-          <button type="button">
-            Carregar mais posts
-          </button>
+          {nextPage && (
+            <button type="button" onClick={handleNextPage}>
+              Carregar mais posts
+            </button>
+          )}
         </div>
       </main>
     </>
