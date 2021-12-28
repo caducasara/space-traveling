@@ -1,1 +1,54 @@
-// TODO
+.banner {
+  height: 30rem;
+  overflow: hidden;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.headerPost {
+  width: 100%;
+  margin-top: 4rem;
+  margin-bottom: 2rem;
+
+  h1 {
+    font-size: 2rem;
+    font-weight: 900;
+    color: var(--heading);
+  }
+
+  div {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: 2rem;
+
+    p {
+      display: flex;
+      align-items: center;
+      margin-right: 2rem;
+
+      font-size: 0.875rem;
+      * {
+        margin-right: 0.5rem;
+      }
+    }
+  }
+}
+
+.paragraph {
+  width: 100%;
+  margin-top: 4rem;
+
+  h3 {
+    font-weight: 700;
+    font-size: 1.75rem;
+    color: car(--heading);
+  }
+
+  p {
+    margin: 2rem 0 2rem;
+    color: var(--info);
+  }
+}
