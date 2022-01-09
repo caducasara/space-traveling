@@ -1,6 +1,5 @@
 import { GetStaticProps } from 'next';
 import Head from 'next/head'
-import Header from '../components/Header';
 import Link from 'next/link'
 
 import { getPrismicClient } from '../services/prismic';
@@ -85,7 +84,6 @@ export default function Home({postsPagination}: HomeProps ) {
         <title>Home | SpaceTraveling</title>
       </Head>
       <main className={commonStyles.container}>
-        <Header/>
         <div className={styles.posts}>
           {posts.map(post => (
             <Link href={`/post/${post.uid}`} key={post.data.title}>
