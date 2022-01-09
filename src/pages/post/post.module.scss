@@ -1,5 +1,5 @@
 .banner {
-  // height: 30rem;
+  height: 34rem;
   overflow: hidden;
 
   display: flex;
@@ -8,6 +8,8 @@
 
   img {
     width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
 }
 
