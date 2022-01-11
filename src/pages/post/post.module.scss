@@ -41,6 +41,13 @@
       }
     }
   }
+
+  span {
+    display: block;
+    font-size: 0.875rem;
+    margin-top: 2rem;
+    font-style: italic;
+  }
 }
 
 .paragraph {
@@ -61,15 +68,37 @@
 
 .navigationPost {
   width: 100%;
+  border-top: 1px solid var(--border);
+  margin-top: 4rem;
 
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: space-between;
 
   div {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+
+    h3 {
+      font-size: 1.125rem;
+      font-weight: 400;
+      color: var(--heading);
+      margin-bottom: 0.5rem;
+    }
+
+    a {
+      color: var(--highlight);
+      font-weight: 600;
+
+      transition: filter 0.2s linear;
+
+      &:hover {
+        filter: brightness(0.8);
+      }
+    }
+  }
+
+  div + div {
+    text-align: right;
   }
 }
